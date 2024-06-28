@@ -1,0 +1,25 @@
+Column,Description,,,,,,,,,,
+CMPLNT_NUM,Randomly generated persistent ID for each complaint ,,为每个投诉随机生成持久ID,,,,,,,,主键ID
+CMPLNT_FR_DT,"Exact date of occurrence for the reported event (or starting date of occurrence, if CMPLNT_TO_DT exists)",,报告事件的确切发生日期（或发生的开始日期，如果存在CMPLNT_TO_DT）,,,,,,,,事件发生日期
+CMPLNT_FR_TM,"Exact time of occurrence for the reported event (or starting time of occurrence, if CMPLNT_TO_TM exists)",,报告事件的确切发生时间（或发生的开始时间，如果存在CMPLNT_TO_TM）,,,,,,,,事件发生时间
+CMPLNT_TO_DT,"Ending date of occurrence for the reported event, if exact time of occurrence is unknown",,如果确切发生时间未知，则报告事件的发生结束日期,,,,,,,,事件结束日期
+CMPLNT_TO_TM,"Ending time of occurrence for the reported event, if exact time of occurrence is unknown",,如果确切发生时间未知，则报告事件的结束发生时间,,,,,,,,事件结束时间
+RPT_DT,Date event was reported to police ,,向警方报告事件的日期,,,,,,,,警方报告日期
+KY_CD,Three digit offense classification code,,三位数的进攻分类码,,,,,,,,犯罪类型代码
+OFNS_DESC,Description of offense corresponding with key code,,与密钥代码对应的犯罪描述,,,,,,,,犯罪类型描述
+PD_CD,Three digit internal classification code (more granular than Key Code),,三位数内部分类代码（比密钥代码更精细）,,,,,,,,精确犯罪类型代码
+PD_DESC,Description of internal classification corresponding with PD code (more granular than Offense Description),,与PD代码相对应的内部分类描述（比冒犯性描述更精细）,,,,,,,,精确犯罪类型描述
+CRM_ATPT_CPTD_CD,"Indicator of whether crime was successfully completed or attempted, but failed or was interrupted prematurely",,犯罪是否成功完成或未遂，但失败或过早中断的指标,,,,,,,,犯罪未遂标志：COMPLETED成功，ATTEMPTED未遂
+LAW_CAT_CD,"Level of offense: felony, misdemeanor, violation ",,犯罪级别：重罪、轻罪、违规,,,,,,,,"犯罪级别：重罪 felony, misdemeanor 轻罪, violation 违规"
+JURIS_DESC,"Jurisdiction responsible for incident. Either internal, like Police, Transit, and Housing; or external, like Correction, Port Authority, etc.",,对事件负责的司法管辖区。要么是内部的，比如警察、交通和住房；或外部，如Correction、港务局等。,,,,,,,,事件司法管辖区
+BORO_NM,The name of the borough in which the incident occurred,,事件发生的行政区的名称,,,,,,,,事件发生行政区
+ADDR_PCT_CD,The precinct in which the incident occurred,,事件发生的辖区,,,,,,,,事件发生辖区
+LOC_OF_OCCUR_DESC,"Specific location of occurrence in or around the premises; inside, opposite of, front of, rear of",,场所内或周围发生的具体位置；内侧、对面、前面、后面,,,,,,,,事件发生场所具体位置：内侧，对面，前面，后面
+PREM_TYP_DESC,"Specific description of premises; grocery store, residence, street, etc.",,房屋的具体说明；杂货店、住宅、街道等。,,,,,,,,事件发生地点/房屋类型
+PARKS_NM,"Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)",,纽约市公园、游乐场或绿地的名称（如适用）（不包括州立公园）,,,,,,,,事件发生标识地点名:如xx公园
+HADEVELOPT,"Name of NYCHA housing development of occurrence, if applicable",,发生的NYCHA住房开发的名称（如适用）,,,,,,,,事件发生住房区
+X_COORD_CD,"X-coordinate for New York State Plane Coordinate System, Long Island Zone, NAD 83, units feet (FIPS 3104)",,纽约州长岛区平面坐标系的X坐标，NAD 83，单位为英尺（FIPS 3104）,,,,,,,,纽约州长岛区平面坐标系的X坐标
+Y_COORD_CD,"Y-coordinate for New York State Plane Coordinate System, Long Island Zone, NAD 83, units feet (FIPS 3104)",,纽约州长岛区平面坐标系的Y坐标，NAD 83，单位为英尺（FIPS 3104）,,,,,,,,纽约州长岛区平面坐标系的Y坐标
+Latitude,"Latitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326) ",,全球坐标系的纬度坐标，WGS 1984，十进制度数（EPSG 4326）,,,,,,,,纬度 全球坐标系
+Longitude,"Longitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326)",,全球坐标系的经度坐标，WGS 1984，十进制度数（EPSG 4326）,,,,,,,,经度 全球坐标系
+Lat_Lon,,,,,,,,,,,经纬度 全球坐标

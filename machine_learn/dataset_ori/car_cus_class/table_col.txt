@@ -1,0 +1,12 @@
+汽车客户数据集
+CustomerID : 唯一的客户 ID
+Gender ：客户的性别
+Married ：客户的婚姻状况
+Age ：客户年龄
+Graduated ：指定客户是否已毕业？
+Profession ：客户的职业
+WorkExperience : 客户多年的工作经验
+SpendingScore : 客户的消费分数
+FamilySize : 客户的家庭成员数量（包括客户）
+Category ：客户的匿名类别
+Segmentation ：（目标变量）客户的客户细分

@@ -1,0 +1,38 @@
+使用数据包的官方网站
+https://scikit-learn.org/stable/index.html
+
+------
+函数 pd.plotting.scatter_matrix 散点图矩阵 主要参数:
+c:散点颜色 ? 可以直接使用元组名称
+cmap:颜色板 blues ? 猜测是使用同色系颜色
+s:散点大小 int
+figsize:英寸单位图像大小 (宽,高)
+marker:标记点类型 .点 o园 v倒三角 *星 s正方形
+alpha:透明度(0,1]
+hist_kwds:对角线上直方图的参数元组 ? 暂不知用途
+
+关于绘制出的图像 散点图矩阵:
+对角线:核密度估计图 > 简单理解为变量出现的频次
+非对角线:任意两个变量之间的散点图 衡量关联度
+
+--------
+监督学习:是使用标记数据集来训练算法，以便对数据进行分类或准确预测结果。
+每当想要根据给定输入预测某个结果，并且还有输入/输出对的示例时，都应该使用监督学习;
+
+主要分为两种:分类 classification , 回归 regression
+分类:目标是预测类别标签;常见为二分类/多分类问题,通过标签数确定
+回归:目标是预测一个连续值，编程术语叫作浮点数(floating-point number)，数学术语叫作实数(real number);
+根据N个变量,来预测一个数值;如根据教育水平、年龄和居住地来预测一个人的年收入
+
+泛化 过拟合 欠拟合
+更多数据 -> 更复杂的模型
+--------
+k近邻算法(KNN):在特征空间中，如果一个样本附近的k个最近(即特征空间中最邻近)样本的大多数属于某一个类别，则该样本也属于这个类别
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+
+训练模型 fit(数据,标签)
+knn.fit(X_train, y_train)
+
+评估模型得分 输出(0,1]浮点数 代表百分之X的正确预测率
+knn.score(X_test, y_test)
