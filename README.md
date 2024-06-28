@@ -1,4 +1,5 @@
-# py_utils
+# python3_project
+
 记录一些使用python语言编写的工具类、简单项目等。  
 注意：该项目所有代码均基于`python3.x`进行编写，请在合适的环境下编译运行
 
