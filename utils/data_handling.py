@@ -76,7 +76,7 @@ def get_str_hide(message, hide_args, hide_sub='*'):
     :param hide_sub: 替换的字符 默认*
     :return:脱敏后结果
     """
-    # message = "四川省成都市武侯区12345有限公司"
+    
     # hide1 = [1, 3, 3]  # 前后隐藏
     # hide2 = [2, 9, 9]  # 中间隐藏
     # hide_args = hide2
@@ -99,6 +99,6 @@ def get_str_hide(message, hide_args, hide_sub='*'):
 
 
 if __name__ == '__main__':
-    # get_str_hide(13890711287, [2, 3, 4])
+    # get_str_hide(13900001258, [2, 3, 4])
     get_str_match("123456789123456789", 'IDNumber')
     pass
