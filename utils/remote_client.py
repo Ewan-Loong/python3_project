@@ -5,7 +5,7 @@
 # @File    : remote_client.py
 # @Description : ssh\sftp 远程连接工具
 import os
-
+import stat
 from paramiko import SSHClient, SFTPClient, Transport, AutoAddPolicy, WarningPolicy, RejectPolicy
 
 
@@ -90,24 +90,28 @@ class SFTP(object):
     def __put(self, local_file, remote_file):
         try:
             self.client.put(local_file, remote_file)
-            self.client.chmod(remote_file, 0o777)  # 777权限
+            # self.client.chmod(remote_file, 0o777)  # 777权限 windows不支持权限设置
         except Exception as e:
-            print("[put] {} ==> {} failed".format(local_file, remote_file))
+            print("[PUT] {} ==> {} failed".format(local_file, remote_file))
             raise Exception(e.args)
         else:
-            print("[put] {} ==> {} ok".format(local_file, remote_file))
+            print("[PUT] {} ==> {} ok".format(local_file, remote_file))
 
     # 上传文件
-    def put(self, local_dir, files, remote_dir=None, flag_file='put_ok'):
+    def put(self, local_dir, files=None, remote_dir=None, flag_file='put_ok'):
         if not files:
-            raise Exception('put files must be specified')
+            print('未指定上传文件列表,将上传路径[{}]下所有文件(不含子文件夹)'.format(local_dir))
+            files = [f for f in os.listdir(local_dir) if os.path.isfile(os.path.join(local_dir, f))]
+            print("上传文件清单:{}".format(files))
         if not remote_dir:
             remote_dir = './'
 
-        # 拼接文件路径
+        # 拼接文件路径 路径需以 / 结尾
         if local_dir:
+            local_dir = local_dir if local_dir.endswith('/') else local_dir + '/'
             local_files = [os.path.join(local_dir, f) for f in files]
         if remote_dir:
+            remote_dir = remote_dir if remote_dir.endswith('/') else remote_dir + '/'
             remote_files = [os.path.join(remote_dir, f) for f in files]
 
         # 本地文件路径校验
@@ -121,36 +125,46 @@ class SFTP(object):
 
         # put完成后生成标志文件
         flag_dir = os.path.join(remote_dir, flag_file)
-        with open(flag_dir, 'w') as f:
+        with self.client.open(flag_dir, 'w') as f:
             print('create put complete flag: {0}'.format(flag_dir))
-        self.__put(flag_file, flag_dir)
 
     def __get(self, remote_file, local_file):
         try:
             self.client.get(remote_file, local_file)
-            self.client.chmod(local_file, 0o777)  # 777权限
+            # self.client.chmod(local_file, 0o777)  # 777权限 windows不支持权限设置
         except Exception as e:
-            print("[get] {} ==> {} failed".format(remote_file, local_file))
+            print("[GET] {} ==> {} failed".format(remote_file, local_file))
             raise Exception(e.args)
         else:
-            print("[get] {} ==> {} ok".format(remote_file, local_file))
+            print("[GET] {} ==> {} ok".format(remote_file, local_file))
 
-    # 下载文件
-    def get(self, remote_dir, files, local_dir=None, flag_file='get_ok'):
+    # 下载文件 FIXME
+    def get(self, remote_dir, files=None, local_dir=None, flag_file='get_ok'):
         if not files:
-            raise Exception('get files must be specified')
+            print('未指定下载文件列表,将下载路径[{}]下所有文件(不含子文件夹)'.format(remote_dir))
+            files = [f for f in self.client.listdir(remote_dir) if not stat.S_ISDIR(self.client.stat(os.path.join(remote_dir, f)).st_mode)]
+            print("下载文件清单:{}".format(files))
+            # raise Exception('get files must be specified')
         if not local_dir:
             local_dir = './'
 
-        # 拼接文件路径
+        # 拼接文件路径 路径需以 / 结尾
         if local_dir:
+            local_dir = local_dir if local_dir.endswith('/') else local_dir + '/'
             local_files = [os.path.join(local_dir, f) for f in files]
         if remote_dir:
+            remote_dir = remote_dir if remote_dir.endswith('/') else remote_dir + '/'
             remote_files = [os.path.join(remote_dir, f) for f in files]
 
-        # 远程文件路径校验 FIXME 可能有问题
-        if not all([self.client.stat(f) for f in remote_files]):
-            raise Exception("remote file {0} not exist".format(remote_files))
+        # 远程文件路径校验
+        err_files = []
+        for f in remote_files:
+            try:
+                self.client.stat(f)
+            except IOError:
+                err_files.append(f)
+        if err_files:
+            raise Exception("remote file {0} not exist".format(err_files))
 
         for index, f in enumerate(files):
             self.__get(remote_files[index], local_files[index])
@@ -166,7 +180,9 @@ if __name__ == '__main__':
     # ssh.exec_command('pwd')
     # ssh.close()
 
-    sftp = SFTP('192.168.2.136', user='ewan', passwd='123456')
-    sftp.put("e:/pywork/tmp", ['std_data_model_tpl.xls'])
-    # sftp.get('/home/ewan', ['std_data_model_tpl.xls']) # FIXME
-    sftp.close()
+    # sftp = SFTP('192.168.2.136', user='ewan', passwd='123456')
+    # sftp.put("e:/pywork/tmp/")
+    # sftp.get('/home/ewan/', ['std_data_model_tpl.xls'])
+    # sftp.get('/home/ewan/', local_dir='G:/tmp/')
+    # sftp.close()
+    pass
