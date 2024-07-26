@@ -138,11 +138,12 @@ class SFTP(object):
         else:
             print("[GET] {} ==> {} ok".format(remote_file, local_file))
 
-    # 下载文件 FIXME
+    # 下载文件
     def get(self, remote_dir, files=None, local_dir=None, flag_file='get_ok'):
         if not files:
             print('未指定下载文件列表,将下载路径[{}]下所有文件(不含子文件夹)'.format(remote_dir))
-            files = [f for f in self.client.listdir(remote_dir) if not stat.S_ISDIR(self.client.stat(os.path.join(remote_dir, f)).st_mode)]
+            files = [f for f in self.client.listdir(remote_dir)
+                     if not stat.S_ISDIR(self.client.stat(os.path.join(remote_dir, f)).st_mode)]
             print("下载文件清单:{}".format(files))
             # raise Exception('get files must be specified')
         if not local_dir:
