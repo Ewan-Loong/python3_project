@@ -18,6 +18,7 @@ clone 代码到python编译器、IDEA或其他可以运行python脚本的环境�
   * 数据处理工具 data_handling.py
   * 聚类分析工具 KmeansUtil.py
   * 远程SSH/SFTP客户端工具 remote_client.py
+  * 自动化生成sqlalchemy的表声明定义 gen_tbl_def.py
 * pygame 实现小游戏 /pygame 
   * 飞机大战
   * 贪吃蛇
