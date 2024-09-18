@@ -26,4 +26,4 @@ clone 代码到python编译器、IDEA或其他可以运行python脚本的环境�
 * 机器学习框架 /machine_learn 基于scikit-learn包的模型训练学习 `含数据集`
 
 ## 主要项目负责人
-[@Ewan](https://github.com/Ewan-C196)
+[@Ewan](https://github.com/Ewan-Loong)
