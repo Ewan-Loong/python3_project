@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><root><mxCell id="1" parent="0"/><Task script="true" label="更新文件列表和fiscal_date" type="kiss.bash" conn="node42" id="2"><script><![CDATA[cd /home/kanas/kanas/klake/scripts
+# python init_trans_files.py
+python get_fiscal_date.py]]></script><mxCell style="shape=image;image=/images/bash.png;verticalLabelPosition=bottom;verticalAlign=top" parent="1" vertex="1"><mxGeometry x="180" y="180" width="40" height="40" as="geometry"/></mxCell></Task></root>
