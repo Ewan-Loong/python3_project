@@ -16,8 +16,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # DB #
 DB_HOST = "localhost"
 DB_PORT = 3306
-# DB_NAME = "py2_sqlalchemy"
-DB_NAME = "py3_hrms"
+DB_NAME = "py2_sqlalchemy"
+# DB_NAME = "py3_hrms"
 DB_USER = "root"
 DB_PASSWORD = "root"
 
@@ -27,14 +27,14 @@ DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8mb4'.format(DB_USER, DB_PAS
 # 基本配置类
 class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex())  # 之前遇到过，在启用Session的时候，一定要有它
-    PERMANENT_SESSION_LIFETIME = timedelta(days=31)  # days，Session的生命周期(秒)默认31天的秒数
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=10)  # Session的生命周期(秒) 默认10min的秒数
 
     USE_X_SENDFILE = False  # 是否弃用 x_sendfile
 
     # SERVER_NAME = '0.0.0.0'  # 服务访问域名
     # APPLICATION_ROOT = None  # 项目的完整路径
 
-    SESSION_COOKIE_NAME = 'session'  # 在cookies中存放session加密字符串的名字
+    SESSION_COOKIE_NAME = 'flask_learn'  # 在cookies中存放session加密字符串的名字
     SESSION_COOKIE_DOMAIN = None  # 在哪个域名下会产生session记录在cookies中
     SESSION_COOKIE_PATH = None  # cookies的路径
     SESSION_COOKIE_HTTPONLY = True  # 控制 cookie 是否应被设置 httponly 的标志，

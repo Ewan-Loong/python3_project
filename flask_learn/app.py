@@ -37,23 +37,37 @@ def create_app(conf="dev"):
     def hello():
         return render_template('/test/index.html')
 
-    @app.before_request
-    def log_quest():
-        app.logger.info(None)
+    # @app.before_request
+    # def log_quest():
+    #     app.logger.info()
 
     # @app.before_request
     # def req_test():
     #     request.json = json.loads(request.bp)
 
-    # 注册蓝图 改用配置文件
+    # Celery 集成
+    # from .celery import app as celery_app
+    # from celery.result import AsyncResult
+    # @app.route('/task_progress', methods=['POST'])
+    # def check_task_progress():
+    #     if request.json:
+    #         data = request.json
+    #         task_id = data['task_id']
+    #         result = AsyncResult(task_id, app=celery_app)
+    #         return {'state': result.state, 'meta': result.info}  # 返回状态和元数据。
+
+    # 注册蓝图 改用配置
     # app.register_blueprint(bp)
 
     # 获取蓝图 注册
-    route_list = ['services', 'services/hrms']
+    route_list = ['services', 'services/order_manage']
     for r in route_list:
+        # glob 搜索当前目录下所有*.py文件,返回Path对象 (使用rglob可搜索当前目录及其子目录)
+        # stem返回没有扩展名的文件全路径,如 services/hrms/hr_staff.py > hr_staff
         route_files = [f.stem for f in Path(r).glob('*.py') if f.stem != '__init__']
 
         for route_file in route_files:
+            # 动态引入包,并注册bp蓝图对象
             module = importlib.import_module(f"{r.replace('/', '.')}.{route_file}")
             router = getattr(module, "bp", None)
             if router is not None:

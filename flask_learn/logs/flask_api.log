@@ -61,3 +61,29 @@
 [2024-05-28 15:05:28,562] ERROR 127.0.0.1 requested /hr/select_staff : {'staff_no': 'yinyeliu014'} 'Hr_staff' object has no attribute '_mapping'
 [2024-05-28 15:05:47,511] INFO 127.0.0.1 requested /hr/select_staff : {'staff_no': 'yinyeliu014'} None
 [2024-05-28 15:14:29,330] INFO 127.0.0.1 requested /hr/select_staff : {'staff_no': 'yinyeliu014'} None
+[2025-08-22 11:49:18,410] INFO 127.0.0.1 requested None : {'id': 2000010101, 'type': 'teacher'} None
+[2025-08-22 11:49:18,432] ERROR 127.0.0.1 requested None : {'id': 2000010101, 'type': 'teacher'} 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-08-22 11:49:34,157] INFO 127.0.0.1 requested None : {} None
+[2025-08-22 11:49:34,157] ERROR 127.0.0.1 requested None : {} 405 Method Not Allowed: The method is not allowed for the requested URL.
+[2025-08-22 11:52:36,523] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': '1'} None
+[2025-08-22 11:52:36,645] ERROR 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': '1'} list indices must be integers or slices, not str
+[2025-08-22 11:53:38,236] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} None
+[2025-08-22 11:53:38,241] ERROR 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} list indices must be integers or slices, not str
+[2025-08-22 13:34:51,798] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} None
+[2025-08-22 13:35:39,399] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} None
+[2025-08-22 13:35:39,459] ERROR 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} list indices must be integers or slices, not str
+[2025-08-22 13:37:09,212] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} None
+[2025-08-22 13:37:09,269] ERROR 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} list indices must be integers or slices, not str
+[2025-08-22 13:38:36,588] INFO 127.0.0.1 requested /UserAuth/login : {'name': 'Abbott', 'id': 1} None
+[2025-08-22 13:43:05,639] ERROR 127.0.0.1 requested /UserAuth/create_user : {'values': ''} 员工信息不能为空
+[2025-08-22 13:44:01,939] ERROR 127.0.0.1 requested /UserAuth/create_user : {'values': ''} 员工信息不能为空
+[2025-08-22 13:52:27,584] INFO 127.0.0.1 requested /UserAuth/create_user : {'values': '1'} an integer is required (got type str)
+[2025-08-22 16:41:01,150] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:41:49,640] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:42:49,348] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:43:08,738] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:43:15,756] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:44:27,547] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:45:44,355] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:45:56,266] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'
+[2025-08-22 16:46:05,043] ERROR 127.0.0.1 requested /UserAuth/refresh_token : {'values': '1'} 'Token'

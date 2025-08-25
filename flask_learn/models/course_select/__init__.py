@@ -5,7 +5,7 @@
 # @File    : __init__.py
 # @Description : 选课系统表
 
-# from .student import *
-# from .teacher import *
-# from .login import *
-# from .course import *
+from .student import *
+from .teacher import *
+from .login import *
+from .course import *

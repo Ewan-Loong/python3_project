@@ -46,12 +46,13 @@ def delete_by_id(table_name):
     assert request.json, '请传入正确的参数'
     id = request.json['id']
     obj = getattr(models, table_name.capitalize())
-    u = obj.query.filter(obj.id == id).delete()
-    db_session.commit()
+    u = obj.query.filter(obj.id == id).all()
     if u == 1:
-        return "ok"
+        obj.query.filter(obj.id == id).delect()
+        db_session.commit()
+        return {'msg': 'ok'}
     else:
-        return '无法删除不存在的对象'
+        return {'msg': '无法删除不存在的对象'}
 
 
 @bp.route('/update/<table_name>', methods=['POST'])
@@ -60,10 +61,11 @@ def update_by_id(table_name):
     if request.json:
         args = request.json
         obj = getattr(models, table_name.capitalize())
-        u = obj.query.filter(obj.id == args['id']).update(args)
+        u = obj.query.filter(obj.id == args['id']).all()
         # u = Student.query.filter(Student.id == args['id']).update(args)
-        db_session.commit()
         if u == 1:
+            obj.query.filter(obj.id == args['id']).update(args)
+            db_session.commit()
             res['msg'] = 'ok'
         else:
             res['msg'] = '无法更新不存在的对象'
@@ -81,7 +83,7 @@ def insert_by_none(table_name):
         obj = getattr(models, table_name.capitalize())
         # u = Student.session.execute(insert(Student).values(args['values']))
         try:
-            u = db_session.execute(insert(obj).values(args['values']))
+            ins = db_session.execute(insert(obj).values(args['values']))
             db_session.commit()
             res['msg'] = 'ok'
         except Exception as e:
