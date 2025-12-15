@@ -22,7 +22,7 @@ clone 代码到python编译器、IDEA或其他可以运行python脚本的环境�
 * pygame 实现小游戏 /pygame 
   * 飞机大战
   * 贪吃蛇
-* flask项目框架 /flask_learn
+* flask项目框架 /flask_learn (已单独建立仓库)
 * 机器学习框架 /machine_learn 基于scikit-learn包的模型训练学习 `含数据集`
 
 ## 主要项目负责人
